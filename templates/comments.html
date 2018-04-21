@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block navigation %}
+    {{ super() }}
+{% endblock %}
+
+{% block main_content %}
+
+
+<h1>Thank you for leaving a review on our application!</h1>
+
+<p>It seems like you would <i><strong>{{ useful }}</strong></i> use the application again based on your comment <i><strong>{{ comment }}</strong></i></p>
+
+{% endblock %}

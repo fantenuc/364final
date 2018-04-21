@@ -1,0 +1,35 @@
+<h1> All Movie Reviews </h1>
+{% extends 'base.html' %}
+{% block navigation %}
+ {{ super() }}
+{% endblock %}
+
+{% block main_content %}
+<ul>
+{% for x in all_reviews %}
+<li>
+  <h4>{{ x.movie_title }}</h4>
+  <h4>{{ x.rating }}</h4>
+  <h4>{{ x.review_title }}</h4>
+  <h4>{{ x.review_summary }}</h4>
+  <h4>{{ x.release_date }}</h4>
+  <h4> -------------------- </h4>
+  {% if not all_reviews %}
+    There are no saved reviews to show.
+  {% endif %}
+<br>
+{% endfor %}
+</ul>
+
+{% if not all_reviews %}
+There are no saved reviews to show.
+{% endif %}
+
+<div>
+{% for message in get_flashed_messages() %}
+<strong>*** {{ message }} ***</strong>
+{% endfor %}
+</div>
+
+<a href="{{ url_for('base')}}">Click here to search for more movie reviews</a>
+{% endblock %}

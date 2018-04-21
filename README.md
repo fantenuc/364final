@@ -6,9 +6,37 @@ My application allows users to register and sign into the application to ensure 
 
 There are no additional modules to be installed in order for this application to run.
 
+ALL Routes
 
+http://localhost:5000/ -> base.html
 
+http://localhost:5000/login -> login.html
 
+http://localhost:5000/logout -> base.html
+
+http://localhost:5000/register -> register.html
+
+http://localhost:5000/register -> "Only authenticated users can do this! To do this, please log in."
+
+http://localhost:5000/reviews_searched/<search_term> -> searched_reviews.html
+
+http://localhost:5000/search_terms -> search_terms.html
+
+http://localhost:5000/all_reviews -> all_reviews.html
+
+http://localhost:5000/create_movie_collection -> create_user_collection.html
+
+http://localhost:5000/collections -> user_collections.html
+
+http://localhost:5000/collection/<id_num> -> single_collection.html
+
+http://localhost:5000/update/<collection> -> update_collection.html
+
+http://localhost:5000/delete/<collection> -> user_collections.html
+
+http://localhost:5000/comments -> leave_comments.html
+
+http://localhost:5000/view_comments -> comments.html
 
 
 
@@ -78,9 +106,11 @@ Additional Requirements for additional points -- an app with extra functionality
 Note: Maximum possible % is 102%.
 
  (100 points) Include a use of an AJAX request in your application that accesses and displays useful (for use of your application) data.
+
  (100 points) Create, run, and commit at least one migration.
+
  (100 points) Include file upload in your application and save/use the results of the file. (We did not explicitly learn this in class, but there is information available about it both online and in the Grinberg book.)
+
  **(100 points) Deploy the application to the internet (Heroku) — only counts if it is up when we grade / you can show proof it is up at a URL and tell us what the URL is in the README. (Heroku deployment as we taught you is 100% free so this will not cost anything.)**
+
  (100 points) Implement user sign-in with OAuth (from any other service), and include that you need a specific-service account in the README, in the same section as the list of modules that must be installed.
-# 364final
-# 364final

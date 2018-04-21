@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block navigation %}
+    {{ super() }}
+{% endblock %}
+
+{% block main_content %}
+
+<h3>Please leave a comment about your time using this application. We use these comments to help us improve our application!</h3>
+
+<form action="{{ url_for('view_comments') }}" method="GET">
+    {{ form.comment.label() }}{{ form.comment() }}<br>
+    {{ form.useful.label() }}{{ form.useful() }}<br>
+    {{ form.submit() }}
+    {{ form.hidden_tag() }}
+</form>
+
+{% endblock %}

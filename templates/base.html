@@ -1,0 +1,37 @@
+{% if current_user.is_authenticated %}
+    <a href="{{ url_for('logout') }}">Sign Out {{current_user.username}}</a>
+{% else %}
+    <a href="{{ url_for('login') }}">Sign In</a>
+{% endif %}
+<br>
+<br>
+<h1>Welcome to the Movie Reviews Application!</h1>
+
+{% block navigation %}
+<p>------------</p>
+<h3>Navigation</h3>
+<ul><i>
+    <li><a href="{{ url_for('base') }}">Search for Movie Reviews</a>
+    <li><a href="{{ url_for('all_reviews') }}">See all Movie Reviews</a></li>
+    <li><a href="{{ url_for('search_terms') }}">See all Past Searches</a></li>
+    <li><a href="{{ url_for('create_user_collection') }}">Create a Personal Movie Review Collection</a></li>
+    <li><a href="{{ url_for('user_collections') }}">See your Movie Review Collections</a></li>
+    <li><a href="{{ url_for('comments') }}">Please Leave us a Review on the Application</a></li></li></i>
+</ul>
+<p>--------</p><br>
+{% endblock %}
+
+{% block main_content %}
+<form method="POST">
+	{{ form.hidden_tag() }}
+	{{ form.search.label }} {{ form.search() }}
+	{{ form.submit() }}
+</form>
+
+<div>
+{% for message in get_flashed_messages() %}
+<strong>{{ message }}</strong>
+{% endfor %}
+</div>
+
+{% endblock %}

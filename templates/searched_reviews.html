@@ -1,0 +1,34 @@
+<h1>Search results for {{ term.term }}</h1>
+{% extends 'base.html' %}
+
+{% block navigation %}
+ {{ super() }}
+{% endblock %}
+
+{% block main_content %}
+
+<ul>
+{% for x in reviews %}
+<li>
+  <h4>{{ x.movie_title }}</h4>
+  <h4>{{ x.rating }}</h4>
+  <h4>{{ x.review_title }}</h4>
+  <h4>{{ x.review_summary }}</h4>
+  <h4>{{ x.release_date }}</h4>
+  <h4> -------------------- </h4>
+  {% if not reviews %}
+    There are no reviews to show with this search term.
+  {% endif %}
+</li>
+{% endfor %}
+</ul>
+
+
+
+<div>
+{% for message in get_flashed_messages() %}
+<strong>*** {{ message }} ***</strong>
+{% endfor %}
+</div>
+
+{% endblock %}

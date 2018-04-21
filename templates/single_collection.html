@@ -1,0 +1,22 @@
+<h1>{{ collection.name }}</h1>
+{% extends 'base.html' %}
+
+{% block navigation %}
+ {{ super() }}
+{% endblock %}
+
+{% block main_content %}
+
+{% for m in movies %}
+      <h3>{{ m.movie_title }}</h3>
+      <h4>{{ m.rating }}</h4>
+      <h4> -------------------- </h4>
+{% endfor %}
+
+<div>
+{% for message in get_flashed_messages() %}
+{{ message }}
+{% endfor %}
+</div>
+
+{% endblock %}

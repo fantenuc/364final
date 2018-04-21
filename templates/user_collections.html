@@ -1,0 +1,35 @@
+<h1>My Movie Collections</h1>
+
+{% extends 'base.html' %}
+
+{% block navigation %}
+ {{ super() }}
+{% endblock %}
+
+{% block main_content %}
+
+<ul>
+{% for c in collections %}
+    <li>
+      <h3>Collection Name: <a href="http://localhost:5000/collection/{{ c.id }}">{{ c.name }}</a></h3>
+      <form method="POST" action="/delete/{{ c.name }}">
+          {{ form1.submit() }}
+      </form>
+      <p>Description of Collection: {{ c.description }}</p>
+      <form method="POST" action="/update/{{ c.description }}">
+                {{ form.hidden_tag() }}
+                {{ form.submit() }}
+      </form>
+    </li>
+{% endfor %}
+</ul>
+
+<div>
+{% for message in get_flashed_messages() %}
+<strong>{{ message }}</strong>
+{% endfor %}
+</div>
+
+
+
+{% endblock %}
