@@ -24,9 +24,10 @@ app = Flask(__name__)
 app.debug = True
 app.use_reloader = True
 app.config['SECRET_KEY'] = 'hardtoguessstring'
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://localhost/fantenuc364final"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DATABASE_URL') or "postgresql://localhost/fantenuc364final"
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['HEROKU_ON'] = os.environ.get('HEROKU')
 
 # App addition setups
 manager = Manager(app)
@@ -249,7 +250,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    flash('You have been logged out')
+    flash('You have been logged out of the Movies Review Application. Thank you for choosing our app!')
     return redirect(url_for('base'))
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -259,14 +260,14 @@ def register():
         user = User(email=form.email.data, username=form.username.data, password=form.password.data)
         db.session.add(user)
         db.session.commit()
-        flash('You can now log in!')
+        flash('You can now log in to Movie Reviews Application!')
         return redirect(url_for('login'))
     return render_template('register.html',form=form)
 
 @app.route('/secret')
 @login_required
 def secret():
-    return "Only authenticated users can do this! To do this, please log in."
+    return "Only authenticated users can do this! To do this, please log in to the Movie Reviews Application."
 
 @app.route('/', methods=['GET', 'POST'])
 def base():
@@ -294,7 +295,6 @@ def search_terms():
 def all_reviews():
     reviews = Review.query.all()
     return render_template('all_reviews.html', all_reviews=reviews)
-
 
 @app.route('/create_movie_collection',methods=["GET","POST"])
 @login_required
@@ -360,7 +360,6 @@ def view_comments():
     if request.args:
         comment = request.args.get('comment')
         useful = request.args.get('useful')
-
         return render_template('comments.html', comment=comment, useful=useful)
     return redirect(url_for('comments'))
 
